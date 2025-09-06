@@ -8,7 +8,6 @@ const contadorCarrito = document.getElementById("contadorCarrito");
 const totalCarrito = document.getElementById("total");
 const checkoutBtn = document.getElementById("checkout");
 
-// Detectar entorno y ajustar ruta
 let dataPath = "src/data/data.json";
 if (
   !(
@@ -16,7 +15,7 @@ if (
     window.location.hostname.includes("127.0.0.1")
   )
 ) {
-  dataPath = "./src/data/data.json"; // para producción (GitHub Pages)
+  dataPath = "./src/data/data.json";
 }
 
 fetch(dataPath)

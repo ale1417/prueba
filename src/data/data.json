@@ -1,8 +1,38 @@
 [
-  { "id": 1, "nombre": "Auriculares Bluetooth", "precio": 5500, "img": "src/assets/auriculares.png" },
-  { "id": 2, "nombre": "Teclado Mecánico RGB", "precio": 8700, "img": "src/assets/teclado.png" },
-  { "id": 3, "nombre": "Mouse Gamer Inalámbrico", "precio": 4200, "img": "src/assets/mouse.png" },
-  { "id": 4, "nombre": "Smartwatch Deportivo", "precio": 9900, "img": "src/assets/smartwatch.png" },
-  { "id": 5, "nombre": "Parlante Portátil", "precio": 7600, "img": "src/assets/parlante.png" },
-  { "id": 6, "nombre": "Cámara Web Full HD", "precio": 6100, "img": "src/assets/webcam.png" }
+  {
+    "id": 1,
+    "nombre": "Auriculares Bluetooth",
+    "precio": 5500,
+    "img": "src/assets/auricular.avif"
+  },
+  {
+    "id": 2,
+    "nombre": "Teclado Mecánico RGB",
+    "precio": 8700,
+    "img": "src/assets/teclado.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Mouse Gamer Inalámbrico",
+    "precio": 4200,
+    "img": "src/assets/mouse.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Reloj Inteligente",
+    "precio": 9900,
+    "img": "src/assets/reloj.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Parlante Portátil",
+    "precio": 7600,
+    "img": "src/assets/parlante.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Cámara Web Full HD",
+    "precio": 6100,
+    "img": "src/assets/camara.jpg"
+  }
 ]
