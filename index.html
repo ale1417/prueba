@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto Final Ecommerce</title>
+  <link rel="stylesheet" href="src/css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Catálogo de Tecnología</h1>
+    <button id="btnCarrito">Abrir Carrito <span id="contadorCarrito">0</span></button>
+  </header>
+
+  <main>
+    <div id="productos-container" class="grid"></div>
+  </main>
+
+  <aside id="carrito" class="hidden">
+    <button id="cerrarCarrito">X</button>
+    <h2>Tu carrito</h2>
+    <div id="carrito-items"></div>
+    <p id="total">Total: $0</p>
+    <button id="checkout">Checkout</button>
+  </aside>
+
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>

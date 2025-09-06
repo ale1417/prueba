@@ -1,0 +1,8 @@
+[
+  { "id": 1, "nombre": "Auriculares Bluetooth", "precio": 5500, "img": "assets/auriculares.png" },
+  { "id": 2, "nombre": "Teclado Mecánico RGB", "precio": 8700, "img": "assets/teclado.png" },
+  { "id": 3, "nombre": "Mouse Gamer Inalámbrico", "precio": 4200, "img": "assets/mouse.png" },
+  { "id": 4, "nombre": "Smartwatch Deportivo", "precio": 9900, "img": "assets/smartwatch.png" },
+  { "id": 5, "nombre": "Parlante Portátil", "precio": 7600, "img": "assets/parlante.png" },
+  { "id": 6, "nombre": "Cámara Web Full HD", "precio": 6100, "img": "assets/webcam.png" }
+]
