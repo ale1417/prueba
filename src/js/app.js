@@ -1,5 +1,3 @@
-import Swal from 'sweetalert2';
-
 let carrito = [];
 const productosContainer = document.getElementById("productos-container");
 const carritoContainer = document.getElementById("carrito-items");
@@ -12,17 +10,22 @@ const checkoutBtn = document.getElementById("checkout");
 
 // Detectar entorno y ajustar ruta
 let dataPath = "src/data/data.json";
-if (!(window.location.hostname.includes("localhost") || window.location.hostname.includes("127.0.0.1"))) {
+if (
+  !(
+    window.location.hostname.includes("localhost") ||
+    window.location.hostname.includes("127.0.0.1")
+  )
+) {
   dataPath = "./src/data/data.json"; // para producción (GitHub Pages)
 }
 
 fetch(dataPath)
-  .then(res => res.json())
-  .then(data => mostrarProductos(data))
-  .catch(err => console.error("Error cargando productos:", err));
+  .then((res) => res.json())
+  .then((data) => mostrarProductos(data))
+  .catch((err) => console.error("Error cargando productos:", err));
 
 function mostrarProductos(productos) {
-  productos.forEach(prod => {
+  productos.forEach((prod) => {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
@@ -35,12 +38,12 @@ function mostrarProductos(productos) {
   });
 }
 
-window.agregarAlCarrito = function(id) {
+window.agregarAlCarrito = function (id) {
   fetch(dataPath)
-    .then(res => res.json())
-    .then(productos => {
-      const producto = productos.find(p => p.id === id);
-      const existe = carrito.find(item => item.id === id);
+    .then((res) => res.json())
+    .then((productos) => {
+      const producto = productos.find((p) => p.id === id);
+      const existe = carrito.find((item) => item.id === id);
 
       if (existe) {
         existe.cantidad++;
@@ -49,11 +52,11 @@ window.agregarAlCarrito = function(id) {
       }
 
       Swal.fire({
-        icon: 'success',
+        icon: "success",
         title: producto.nombre,
-        text: 'Agregado al carrito',
+        text: "Agregado al carrito",
         timer: 1200,
-        showConfirmButton: false
+        showConfirmButton: false,
       });
 
       actualizarCarrito();
@@ -64,7 +67,7 @@ function actualizarCarrito() {
   carritoContainer.innerHTML = "";
   let total = 0;
 
-  carrito.forEach(item => {
+  carrito.forEach((item) => {
     const div = document.createElement("div");
     div.innerHTML = `
       <p>${item.nombre} - $${item.precio} x ${item.cantidad}</p>
@@ -76,12 +79,15 @@ function actualizarCarrito() {
     total += item.precio * item.cantidad;
   });
 
-  contadorCarrito.textContent = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+  contadorCarrito.textContent = carrito.reduce(
+    (acc, prod) => acc + prod.cantidad,
+    0
+  );
   totalCarrito.textContent = `Total: $${total}`;
 }
 
-window.cambiarCantidad = function(id, cambio) {
-  const item = carrito.find(p => p.id === id);
+window.cambiarCantidad = function (id, cambio) {
+  const item = carrito.find((p) => p.id === id);
   if (item) {
     item.cantidad += cambio;
     if (item.cantidad <= 0) eliminarProducto(id);
@@ -89,17 +95,17 @@ window.cambiarCantidad = function(id, cambio) {
   actualizarCarrito();
 };
 
-window.eliminarProducto = function(id) {
+window.eliminarProducto = function (id) {
   Swal.fire({
     title: "¿Estás seguro?",
     text: "Este producto será eliminado del carrito",
     icon: "warning",
     showCancelButton: true,
     confirmButtonText: "Sí, eliminar",
-    cancelButtonText: "Cancelar"
-  }).then(result => {
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
     if (result.isConfirmed) {
-      carrito = carrito.filter(item => item.id !== id);
+      carrito = carrito.filter((item) => item.id !== id);
       Swal.fire("Eliminado", "Producto eliminado del carrito", "success");
       actualizarCarrito();
     }
@@ -108,15 +114,29 @@ window.eliminarProducto = function(id) {
 
 checkoutBtn.addEventListener("click", () => {
   if (carrito.length === 0) {
-    Swal.fire("Carrito vacío", "Agregá algún producto antes de continuar", "warning");
+    Swal.fire(
+      "Carrito vacío",
+      "Agregá algún producto antes de continuar",
+      "warning"
+    );
   } else {
-    let resumen = carrito.map(item => `${item.nombre} - ${item.cantidad} x $${item.precio} = $${item.cantidad * item.precio}`).join("<br>");
-    let total = carrito.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0);
+    let resumen = carrito
+      .map(
+        (item) =>
+          `${item.nombre} - ${item.cantidad} x $${item.precio} = $${
+            item.cantidad * item.precio
+          }`
+      )
+      .join("<br>");
+    let total = carrito.reduce(
+      (acc, prod) => acc + prod.precio * prod.cantidad,
+      0
+    );
 
     Swal.fire({
       title: "Resumen de tu compra",
       html: `${resumen}<br><br><strong>Total: $${total}</strong>`,
-      confirmButtonText: "Finalizar"
+      confirmButtonText: "Finalizar",
     }).then(() => {
       carrito = [];
       actualizarCarrito();
